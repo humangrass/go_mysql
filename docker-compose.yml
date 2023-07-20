@@ -1,0 +1,17 @@
+version: '3.2'
+services:
+  db:
+    container_name: mysql_db
+    image: mysql:5.7
+    environment:
+      - MYSQL_ROOT_PASSWORD=verysecret
+      - MYSQL_DATABASE=my_db
+    volumes:
+      - ./.data/db:/var/lib/mysql
+    command: [
+      'mysqld',
+      '--character-set-server=utf8mb4',
+      '--collation-server=utf8mb4_unicode_ci',
+    ]
+    ports:
+      - "3306:3306"
